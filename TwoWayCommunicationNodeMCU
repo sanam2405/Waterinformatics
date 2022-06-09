@@ -62,7 +62,7 @@ void setup() {
 
   // Init ESP-NOW
   if (esp_now_init() != 0) {
-    Serial.println("Error initializing ESP-NOW");
+    Serial.println("Error initialising ESP-NOW");
     return;
   }
 
@@ -70,7 +70,7 @@ void setup() {
   esp_now_set_self_role(ESP_NOW_ROLE_COMBO);
 
   // Once ESPNow is successfully Init, we will register for Send CB to
-  // get the status of Trasnmitted packet
+  // get the status of Transmitted packet
   esp_now_register_send_cb(OnDataSent);
 
   // Register peer
@@ -87,4 +87,4 @@ void loop() {
    esp_now_send(broadcastAddress, (uint8_t *) &outgoingReadings, sizeof(outgoingReadings));
 
   delay(2000);
-}'
+}
