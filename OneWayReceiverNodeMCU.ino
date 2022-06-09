@@ -1,7 +1,7 @@
 /*
   Flow of the code
   1 - Put WiFi in STA Mode
-  2 - Intialize ESPNOW
+  2 - Initialise ESPNOW
   3 - Set Role to Combo
   4 - Add peer device
   5 - Define Send Callback Function
@@ -62,7 +62,7 @@ void setup() {
 
   // Init ESP-NOW
   if (esp_now_init() != 0) {
-    Serial.println("Error initializing ESP-NOW");
+    Serial.println("Error initialising ESP-NOW");
     return;
   }
 
@@ -70,7 +70,7 @@ void setup() {
   esp_now_set_self_role(ESP_NOW_ROLE_COMBO);
 
   // Once ESPNow is successfully Init, we will register for Send CB to
-  // get the status of Trasnmitted packet
+  // get the status of Transmitted packet
   // esp_now_register_send_cb(OnDataSent);
 
   // Register peer
