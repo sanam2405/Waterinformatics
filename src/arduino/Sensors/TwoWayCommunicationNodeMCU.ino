@@ -10,16 +10,17 @@
 
 #include <Wire.h>
 #ifdef ESP32
-  #include <WiFi.h>
+#include <WiFi.h>
 #else
-  #include <ESP8266WiFi.h>
+#include <ESP8266WiFi.h>
 #endif
 #include <espnow.h>
 
 // REPLACE WITH THE MAC Address of your receiver
 uint8_t broadcastAddress[] = {0xC8, 0xC9, 0xA3, 0x69, 0xDA, 0xCA};
 
-typedef struct struct_message {
+typedef struct struct_message
+{
   char msg[50];
 } struct_message;
 
@@ -33,26 +34,31 @@ struct_message incomingReadings;
 String success;
 
 // Callback when data is sent
-void OnDataSent(uint8_t *mac_addr, uint8_t sendStatus) {
-  Serial.print("Last Packet Send Status: "); 
-  if (sendStatus == 0) {
+void OnDataSent(uint8_t *mac_addr, uint8_t sendStatus)
+{
+  Serial.print("Last Packet Send Status: ");
+  if (sendStatus == 0)
+  {
     Serial.println("Delivery success");
   }
-  else {
+  else
+  {
     Serial.println("Delivery fail");
   }
 }
 
 // Callback when data is received
-void OnDataRecv(uint8_t * mac, uint8_t *incomingData, uint8_t len) {
+void OnDataRecv(uint8_t *mac, uint8_t *incomingData, uint8_t len)
+{
   memcpy(&incomingReadings, incomingData, sizeof(incomingReadings));
   Serial.print("Bytes received: ");
   Serial.println(len);
-  Serial.print("Data: "); Serial.println(incomingReadings.msg);
+  Serial.print("Data: ");
+  Serial.println(incomingReadings.msg);
 }
 
-
-void setup() {
+void setup()
+{
   // Init Serial Monitor
   Serial.begin(115200);
 
@@ -61,7 +67,8 @@ void setup() {
   WiFi.disconnect();
 
   // Init ESP-NOW
-  if (esp_now_init() != 0) {
+  if (esp_now_init() != 0)
+  {
     Serial.println("Error initialising ESP-NOW");
     return;
   }
@@ -76,15 +83,15 @@ void setup() {
   // Register peer
   esp_now_add_peer(broadcastAddress, ESP_NOW_ROLE_COMBO, 1, NULL, 0);
 
-  
   // Register for a callback function that will be called when data is received
   esp_now_register_recv_cb(OnDataRecv);
 }
 
-void loop() {
+void loop()
+{
 
   strcpy(outgoingReadings.msg, "Hello from Front NodeMCU");
-   esp_now_send(broadcastAddress, (uint8_t *) &outgoingReadings, sizeof(outgoingReadings));
+  esp_now_send(broadcastAddress, (uint8_t *)&outgoingReadings, sizeof(outgoingReadings));
 
   delay(2000);
 }
