@@ -2,7 +2,7 @@
 
 ## Overview
 
-- Worked in the Water Informatics Laboratory, **_AKCSIT, University of Calcutta funded by the Ministry of Jal Shakti, Government of India_**
+- Worked in the Water Informatics Laboratory, **_AKCSIT, University of Calcutta_ funded by the _Ministry of Jal Shakti, Government of India_**
 - Designed IoT-based prototypes to detect water leakage and measure water parameters such as flow rate, pH, and turbidity in real-time using sensors and NodeMCU microcontrollers
 - Multicasted the sensed data to the cloud for further Time-Series machine learning analysis with the _ARIMA_ model using Python
 
@@ -21,6 +21,11 @@
 - Time-Series Forecasting
 
 ![](public/timeseries.png)
+
+## Mentor
+
+[Amlan Chakrabarti](https://sites.google.com/caluniv.ac.in/amlanc-org)
+[Dola Bhattacharjee Gupta ](https://www.linkedin.com/in/dola-bhattacharjee-gupta-9a56173b)
 
 ## Certificate
 
