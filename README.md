@@ -6,6 +6,8 @@
 - Designed IoT-based prototypes to detect water leakage and measure water parameters such as flow rate, pH, and turbidity in real-time using sensors and NodeMCU microcontrollers
 - Multicasted the sensed data to the cloud for further Time-Series machine learning analysis with the _ARIMA_ model using Python
 
+Link to the **_[Project Report](report/Waterinformatics-FinalReport.pdf)_**
+
 ## Architecture
 
 ![](public/iotprototype.png)
